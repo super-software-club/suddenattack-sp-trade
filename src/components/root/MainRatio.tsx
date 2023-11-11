@@ -1,6 +1,6 @@
 const MainRatio = () => {
   return (
-    <div className="flex-1 bg-card-background rounded-2xl px-6 py-4 flex flex-col items-center gap-2">
+    <div className="flex-1 bg-card-background lg:rounded-2xl px-6 py-4 flex flex-col items-center gap-2">
       <h2 className="text-xl font-bold text-white">비율 안내</h2>
       <div className="flex flex-col justify-evenly items-center h-full">
         <div className="flex flex-row gap-3">

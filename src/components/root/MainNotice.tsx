@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const MainNotice = () => {
   return (
-    <section className="flex-1 bg-card-background rounded-2xl px-6 py-4 flex flex-col gap-3">
+    <section className="flex-1 bg-card-background lg:rounded-2xl px-6 py-4 flex flex-col gap-3">
       <header className="flex flex-row items-center justify-between w-full">
         <h2 className="text-xl font-bold text-white">공지사항</h2>
         <Link className="text-sm font-bold text-white" href="/">

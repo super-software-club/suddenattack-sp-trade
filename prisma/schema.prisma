@@ -38,5 +38,6 @@ model review {
   review_title    String    @db.VarChar(100)
   review_content  String    @db.Text
   review_count    Int       @default(0)
+  review_name     String    @db.VarChar(50)
   reg_date        DateTime  @default(now())
 }

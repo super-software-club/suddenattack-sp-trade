@@ -2,7 +2,7 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 const MainCalculator = () => {
   return (
-    <div className="bg-card-background rounded-2xl px-6 py-4 flex-1 box-border flex flex-col gap-4 items-center">
+    <div className="bg-card-background lg:rounded-2xl px-6 py-4 flex-1 box-border flex flex-col gap-4 items-center">
       <h2 className="text-xl font-bold text-white">실수령 SP 계산기</h2>
       <div className="h-full flex flex-col justify-evenly items-center">
         <div className="flex flex-row gap-2">
