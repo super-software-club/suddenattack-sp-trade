@@ -102,12 +102,32 @@ const ReviewContainer = () => {
             })
           ) : (
             <ReviewCard
-              reviewId={!data ? 0 : data[mobileReviewCount].review_id}
+              reviewId={
+                !data || data.length === 0
+                  ? 0
+                  : data[mobileReviewCount].review_id
+              }
               page={page}
-              content={!data ? "" : data[mobileReviewCount].review_content}
-              title={!data ? "" : data[mobileReviewCount].review_title}
-              review_name={!data ? "" : data[mobileReviewCount].review_name}
-              favoriteCount={!data ? 0 : +data[mobileReviewCount].review_count}
+              content={
+                !data || data.length === 0
+                  ? ""
+                  : data[mobileReviewCount].review_content
+              }
+              title={
+                !data || data.length === 0
+                  ? ""
+                  : data[mobileReviewCount].review_title
+              }
+              review_name={
+                !data || data.length === 0
+                  ? ""
+                  : data[mobileReviewCount].review_name
+              }
+              favoriteCount={
+                !data || data.length === 0
+                  ? 0
+                  : +data[mobileReviewCount].review_count
+              }
             />
           )}
         </AnimatePresence>
