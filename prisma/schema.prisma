@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,33 +8,34 @@ datasource db {
 }
 
 model Notice {
-  notice_id       Int       @id @default(autoincrement())
-  notice_title    String    @db.VarChar(100)
-  notice_content  String    @db.Text
-  visit_count     Int       @default(0)
-  reg_date        DateTime  @default(now())
+  notice_id      Int      @id @default(autoincrement())
+  notice_title   String   @db.VarChar(100)
+  notice_content String   @db.Text
+  visit_count    Int      @default(0)
+  reg_date       DateTime @default(now())
+  picked         Boolean? @default(false)
 }
 
 model Setting {
-  setting_id        Int       @id @default(autoincrement())
-  discord_link      String    @db.VarChar(100)
-  kakaotalk_link    String    @db.VarChar(100)
-  fee               Float     @default(0.1)
-  buy_rate_min      Int       
-  buy_rate_max      Int
-  sell_rate_min     Int
-  sell_rate_max     Int
-  left_image_link   String    @db.VarChar(100)
-  mid_image_link    String    @db.VarChar(100)
-  right_image_link  String    @db.VarChar(100)
-  bg_color_bold     Int       @default(0)
+  setting_id       Int    @id @default(autoincrement())
+  discord_link     String @db.VarChar(100)
+  kakaotalk_link   String @db.VarChar(100)
+  fee              Float  @default(0.1)
+  buy_rate_min     Int
+  buy_rate_max     Int
+  sell_rate_min    Int
+  sell_rate_max    Int
+  left_image_link  String @db.VarChar(1000)
+  mid_image_link   String @db.VarChar(1000)
+  right_image_link String @db.VarChar(1000)
+  bg_color_bold    Int    @default(0)
 }
 
-model review {
-  review_id       Int       @id @default(autoincrement())
-  review_title    String    @db.VarChar(100)
-  review_content  String    @db.Text
-  review_count    Int       @default(0)
-  review_name     String    @db.VarChar(50)
-  reg_date        DateTime  @default(now())
+model Review {
+  review_id      Int      @id @default(autoincrement())
+  review_title   String   @db.VarChar(100)
+  review_content String   @db.Text
+  review_count   Int      @default(0)
+  review_name    String   @db.VarChar(50)
+  reg_date       DateTime @default(now())
 }

@@ -4,57 +4,77 @@ import { useEffect, useState } from "react";
 import ReviewCard from "./ReviewCard";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-const DUMMY_REVIEW_DATA = [
-  {
-    review_id: 1,
-    review_title: "누누SP 최고",
-    review_content: "누누SP 최고",
-    reg_date: "2021-10-10",
-    favorite_count: 10,
-  },
-  {
-    review_id: 2,
-    review_title: "누누SP 최고",
-    review_content: "누누SP 최고",
-    reg_date: "2021-10-10",
-    favorite_count: 10,
-  },
-  {
-    review_id: 3,
-    review_title: "누누SP 최고",
-    review_content: "누누SP 최고",
-    reg_date: "2021-10-10",
-    favorite_count: 10,
-  },
-  {
-    review_id: 4,
-    review_title: "누누SP 최고",
-    review_content: "누누SP 최고",
-    reg_date: "2021-10-10",
-    favorite_count: 10,
-  },
-  {
-    review_id: 5,
-    review_title: "누누SP 최고",
-    review_content: "누누SP 최고",
-    reg_date: "2021-10-10",
-    favorite_count: 10,
-  },
-];
+import { API_URL } from "@/const";
+import { useQuery } from "@tanstack/react-query";
+import { Review } from "@prisma/client";
+import { AnimatePresence, motion } from "framer-motion";
+
+const getReview = async (page: number) => {
+  try {
+    const response = await fetch(`${API_URL}/review?page=${page}`);
+    const data = (await response.json()) as Review[];
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const useGetReview = (page: number) => {
+  return useQuery({
+    queryKey: ["review", page],
+    queryFn: () => getReview(page),
+  });
+};
 
 const ReviewContainer = () => {
-  const width = window.innerWidth;
   const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false);
+  const [page, setPage] = useState(1);
+
+  const { data, refetch } = useGetReview(page);
 
   useEffect(() => {
-    const width = window.innerWidth;
+    refetch();
+  }, [page]);
 
-    if (width > 1024) {
-      setIsLargeScreen(true);
-    } else {
-      setIsLargeScreen(false);
+  const [mobileReviewCount, setMobileReviewCount] = useState(0);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth > 1024);
+    };
+    checkScreenSize();
+
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  function onLeftArrowClickHandler() {
+    if (isLargeScreen && page > 1) {
+      setPage(prev => prev - 1);
+    } else if (!isLargeScreen && page > 1) {
+      if (mobileReviewCount === 0) {
+        setMobileReviewCount(4);
+        setPage(prev => prev - 1);
+      } else {
+        setMobileReviewCount(prev => prev - 1);
+      }
     }
-  });
+  }
+
+  function onRightArrowClickHandler() {
+    if (!!data && data.length < 5) return;
+    if (isLargeScreen) {
+      setPage(prev => prev + 1);
+    } else {
+      if (mobileReviewCount === 4) {
+        setMobileReviewCount(0);
+        setPage(prev => prev + 1);
+      } else {
+        setMobileReviewCount(prev => prev + 1);
+      }
+    }
+  }
 
   return (
     <section className="flex flex-col gap-6">
@@ -62,30 +82,36 @@ const ReviewContainer = () => {
       <ul
         className={`flex flex-row w-full bg-card-background h-72 lg:rounded-2xl justify-between p-8 gap-8 items-center`}
       >
-        <IconButton>
+        <IconButton onClick={onLeftArrowClickHandler}>
           <ArrowBackIos className="text-white font-bold" />
         </IconButton>
-        {isLargeScreen ? (
-          DUMMY_REVIEW_DATA.map(review => {
-            return (
-              <ReviewCard
-                key={`ReviewContainer${review.review_id}`}
-                content={review.review_content}
-                date={review.reg_date}
-                favoriteCount={review.favorite_count}
-                title={review.review_title}
-              />
-            );
-          })
-        ) : (
-          <ReviewCard
-            content={DUMMY_REVIEW_DATA[0].review_content}
-            title={DUMMY_REVIEW_DATA[0].review_title}
-            date={DUMMY_REVIEW_DATA[0].reg_date}
-            favoriteCount={DUMMY_REVIEW_DATA[0].favorite_count}
-          />
-        )}
-        <IconButton>
+        <AnimatePresence>
+          {isLargeScreen ? (
+            data?.map(review => {
+              return (
+                <ReviewCard
+                  reviewId={review.review_id}
+                  page={page}
+                  key={`ReviewContainer${review.review_id}`}
+                  content={review.review_content}
+                  review_name={review.review_name}
+                  favoriteCount={review.review_count}
+                  title={review.review_title}
+                />
+              );
+            })
+          ) : (
+            <ReviewCard
+              reviewId={!data ? 0 : data[mobileReviewCount].review_id}
+              page={page}
+              content={!data ? "" : data[mobileReviewCount].review_content}
+              title={!data ? "" : data[mobileReviewCount].review_title}
+              review_name={!data ? "" : data[mobileReviewCount].review_name}
+              favoriteCount={!data ? 0 : +data[mobileReviewCount].review_count}
+            />
+          )}
+        </AnimatePresence>
+        <IconButton onClick={onRightArrowClickHandler}>
           <ArrowForwardIos className="text-white font-bold" />
         </IconButton>
       </ul>
