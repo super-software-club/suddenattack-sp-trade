@@ -59,14 +59,21 @@ const ReviewContainer = () => {
       } else {
         setMobileReviewCount(prev => prev - 1);
       }
+    } else if (!isLargeScreen && page === 1) {
+      if (mobileReviewCount === 0) {
+        return;
+      } else {
+        setMobileReviewCount(prev => prev - 1);
+      }
     }
   }
 
   function onRightArrowClickHandler() {
-    if (!!data && data.length < 5) return;
+    if (isLargeScreen && !!data && data.length < 5) return;
     if (isLargeScreen) {
       setPage(prev => prev + 1);
     } else {
+      if (!data || data[mobileReviewCount + 1] === undefined) return;
       if (mobileReviewCount === 4) {
         setMobileReviewCount(0);
         setPage(prev => prev + 1);

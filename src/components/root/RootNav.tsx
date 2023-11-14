@@ -79,7 +79,7 @@ const RootNav = () => {
       </div>
       <nav
         id="menu-container"
-        className="hidden flex-col gap-6 fixed h-screen w-2/3 px-6 py-4 bg-banner z-30 right-0 bottom-0 lg:flex lg:flex-row lg:gap-8 text-white font-bold lg:bg-transparent lg:static lg:h-auto lg:items-center lg:w-auto lg:px-0 lg:py-0 lg:justify-evenly"
+        className="hidden pt-24 flex-col gap-6 fixed h-screen w-2/3 px-8 bg-banner z-30 right-0 bottom-0 lg:flex lg:flex-row lg:gap-8 text-white font-bold lg:bg-transparent lg:static lg:h-auto lg:items-center lg:w-auto lg:px-0 lg:py-0 lg:justify-evenly"
       >
         <Link
           onClick={onClickMenu}
