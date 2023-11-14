@@ -7,9 +7,9 @@ const MainRatio = async () => {
     },
   });
   return (
-    <div className="flex-1 bg-card-background lg:rounded-2xl  flex flex-col items-center gap-2">
+    <div className="flex-1 bg-card-background lg:rounded-2xl  flex flex-col items-center">
       <header
-        className="w-full px-4 py-2 rounded-t-2xl"
+        className="w-full px-4 py-2 lg:rounded-t-2xl"
         style={{
           backgroundImage:
             "url(https://images.unsplash.com/photo-1580432551600-8c9768628a9e?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
@@ -17,7 +17,7 @@ const MainRatio = async () => {
       >
         <h2 className="text-xl font-bold text-white">비율 안내</h2>
       </header>
-      <div className="flex flex-col justify-evenly items-center h-full">
+      <div className="flex flex-col justify-evenly items-center h-full py-6">
         <div className="flex flex-row gap-3">
           <p className="text-red-500 font-bold">구매</p>{" "}
           <p className="text-white font-bold">
