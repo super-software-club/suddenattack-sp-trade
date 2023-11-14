@@ -23,7 +23,7 @@ async function getSetting() {
 function useGetSetting() {
   return useQuery({
     queryKey: ["setting"],
-    queryFn: () => getSetting(),
+    queryFn: getSetting,
   });
 }
 
@@ -32,7 +32,7 @@ const RootNav = () => {
   const [touchEndX, setTouchEndX] = useState(0);
   const pathname = usePathname();
 
-  const { data } = useGetSetting();
+  const { data, isLoading, isError } = useGetSetting();
 
   const onClickMenu = () => {
     const menuContainer = document.getElementById("menu-container");
@@ -45,6 +45,11 @@ const RootNav = () => {
       navModalBackdrop.classList.toggle("hidden");
     }
   };
+
+  if (isLoading) return <></>;
+  if (isError) return <></>;
+
+  console.log(data);
 
   function handleTouchStart(event: React.TouchEvent) {
     setTouchStartX(event.changedTouches[0].screenX);
