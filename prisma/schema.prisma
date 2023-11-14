@@ -29,6 +29,7 @@ model Setting {
   mid_image_link   String @db.VarChar(1000)
   right_image_link String @db.VarChar(1000)
   bg_color_bold    Int    @default(0)
+  footer_text      String @db.VarChar(1000)
 }
 
 model Review {
