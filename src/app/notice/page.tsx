@@ -14,6 +14,11 @@ import { Notice } from "@prisma/client";
 import { dateToString } from "@/utils/date";
 import { motion } from "framer-motion";
 import { AnimationWrapper } from "@/components/root/AnimationWrapper";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  description: "누누SP 공지사항 페이지",
+};
 
 async function getNotice(page: number) {
   try {

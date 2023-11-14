@@ -5,7 +5,7 @@ import Link from "next/link";
 const Logo = () => {
   return (
     <Link href={"/"}>
-      <Image src={LogoImage} alt={"logo"} width={100} height={100} />
+      <Image src={LogoImage} alt={"nunusp-logo"} width={100} height={100} />
     </Link>
   );
 };

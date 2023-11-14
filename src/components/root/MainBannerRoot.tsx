@@ -12,7 +12,7 @@ const MainBannerRoot = async () => {
     <Link
       target="_blank"
       href={settings?.kakaotalk_link ?? ""}
-      className="w-full flex flex-col lg:w-full lg:h-80 lg:flex lg:flex-row bg-banner"
+      className="w-full flex flex-col lg:w-full lg:h-80 lg:flex lg:flex-row bg-banner "
     >
       <div className="w-full aspect-video flex-1 lg:h-full relative lg:aspect-auto">
         {

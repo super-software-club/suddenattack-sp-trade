@@ -3,7 +3,6 @@ import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import RootHeader from "@/components/root/RootHeader";
 import MyQueryProvider from "@/MyQueryProvider";
-import { AnimationWrapper } from "@/components/root/AnimationWrapper";
 
 const inter = Noto_Sans_KR({
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -11,9 +10,26 @@ const inter = Noto_Sans_KR({
   subsets: ["latin-ext", "latin"],
 });
 export const metadata: Metadata = {
-  title: "누누SP 서든어택 SP거래 SP거래사이트 SP구매 서든어택SP 구매 사이트",
+  title: "누누SP - 서든어택 SP 거래소",
   description:
-    "누누SP 서든어택 SP거래 SP거래사이트 SP구매 서든어택SP 구매 사이트",
+    "누누SP - 서든어택 SP 거래소 24시간 운영 신속 안전 거래 보장. 서든어택 SP 구매 및 판매 상담",
+  keywords: [
+    "누누SP",
+    "서든",
+    "서든어택",
+    "서든어택SP",
+    "서든SP",
+    "서든SP거래소",
+    "서든SP거래",
+    "서든SP시세",
+    "쏘SP",
+    "서든sp",
+    "서든어택 sp",
+    "서든어택 SP",
+    "서든어택sp",
+    "서든SP시세",
+    "서든SP수수료",
+  ],
 };
 
 export default function RootLayout({
