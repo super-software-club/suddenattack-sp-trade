@@ -5,25 +5,8 @@ import { ThumbUp } from "@mui/icons-material";
 import { IconButton, Pagination } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { useGetReview } from "../root/ReviewContainer";
 import { dateToString } from "@/utils/date";
-
-const getReviewCount = async () => {
-  try {
-    const response = await fetch(`${API_URL}/review/count`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-export const useGetReviewCount = () => {
-  return useQuery({
-    queryKey: ["reviewCount"],
-    queryFn: () => getReviewCount(),
-  });
-};
+import { useGetReview, useGetReviewCount } from "@/utils/hooks";
 
 const ReviewRootContainer = () => {
   const [form, setForm] = useState({

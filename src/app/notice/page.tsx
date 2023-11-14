@@ -7,50 +7,18 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Pagination } from "@mui/material";
-import { API_URL } from "@/const";
-import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { Notice } from "@prisma/client";
 import { dateToString } from "@/utils/date";
 import { AnimationWrapper } from "@/components/root/AnimationWrapper";
+import { useGetNotice, useGetNoticeCount } from "@/utils/hooks";
 
-async function getNotice(page: number) {
-  try {
-    const response = await fetch(`${API_URL}/notice?page=${page}`);
-    const data = (await response.json()) as Notice[];
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-export const useGetNotice = (page: number) => {
-  return useQuery({
-    queryKey: ["notice", page],
-    queryFn: () => getNotice(page),
-  });
-};
-
-async function getNoticeCount() {
-  try {
-    const response = await fetch(`${API_URL}/notice/count`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-const NoticePage = () => {
+export default function NoticePage() {
   const [expanded, setExpanded] = React.useState<number | false>(false);
   const [page, setPage] = useState(1);
 
   const { data, refetch } = useGetNotice(page);
 
-  const { data: noticeCount } = useQuery({
-    queryKey: ["noticeCount"],
-    queryFn: getNoticeCount,
-  });
+  const { data: noticeCount } = useGetNoticeCount();
 
   useEffect(() => {
     refetch();
@@ -125,6 +93,4 @@ const NoticePage = () => {
       </main>
     </AnimationWrapper>
   );
-};
-
-export default NoticePage;
+}

@@ -1,26 +1,8 @@
 "use client";
 
-import { API_URL } from "@/const";
-import { useQuery } from "@tanstack/react-query";
+import { useGetSetting } from "@/utils/hooks";
 import Image from "next/image";
 import Link from "next/link";
-
-const getSetting = async () => {
-  try {
-    const response = await fetch(`${API_URL}/setting`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-export const useGetSetting = () => {
-  return useQuery({
-    queryKey: ["setting"],
-    queryFn: getSetting,
-  });
-};
 
 const MainBannerRoot = () => {
   const { data: settings } = useGetSetting();

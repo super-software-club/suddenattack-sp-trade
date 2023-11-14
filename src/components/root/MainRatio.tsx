@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetSetting } from "./MainBannerRoot";
+import { useGetSetting } from "@/utils/hooks";
 
 const MainRatio = () => {
   const { data: setting } = useGetSetting();

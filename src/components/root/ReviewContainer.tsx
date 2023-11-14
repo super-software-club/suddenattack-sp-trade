@@ -4,27 +4,8 @@ import { useEffect, useState } from "react";
 import ReviewCard from "./ReviewCard";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import { API_URL } from "@/const";
-import { useQuery } from "@tanstack/react-query";
-import { Review } from "@prisma/client";
-import { AnimatePresence, motion } from "framer-motion";
-
-const getReview = async (page: number) => {
-  try {
-    const response = await fetch(`${API_URL}/review?page=${page}`);
-    const data = (await response.json()) as Review[];
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-export const useGetReview = (page: number) => {
-  return useQuery({
-    queryKey: ["review", page],
-    queryFn: () => getReview(page),
-  });
-};
+import { AnimatePresence } from "framer-motion";
+import { useGetReview } from "@/utils/hooks";
 
 const ReviewContainer = () => {
   const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false);

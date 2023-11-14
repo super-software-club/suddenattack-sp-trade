@@ -9,23 +9,7 @@ import { API_URL } from "@/const";
 import { Setting } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-
-async function getSetting() {
-  try {
-    const response = await fetch(`${API_URL}/setting`);
-    const data = (await response.json()) as Setting;
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-function useGetSetting() {
-  return useQuery({
-    queryKey: ["setting"],
-    queryFn: getSetting,
-  });
-}
+import { useGetSetting } from "@/utils/hooks";
 
 const RootNav = () => {
   const [touchStartX, setTouchStartX] = useState(0);

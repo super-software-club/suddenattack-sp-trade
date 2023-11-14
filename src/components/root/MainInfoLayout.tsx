@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetSetting } from "./MainBannerRoot";
+import { useGetSetting } from "@/utils/hooks";
 import MainCalculator from "./MainCalculator";
 import MainNotice from "./MainNotice";
 import MainRatio from "./MainRatio";
