@@ -1,13 +1,9 @@
-import { prisma } from "@/prisma";
+"use client";
 
-export const dynamic = "force-dynamic";
+import { useGetSetting } from "./MainBannerRoot";
 
-const MainRatio = async () => {
-  const setting = await prisma.setting.findFirst({
-    where: {
-      setting_id: 1,
-    },
-  });
+const MainRatio = () => {
+  const { data: setting } = useGetSetting();
   return (
     <div className="flex-1 bg-card-background lg:rounded-2xl  flex flex-col items-center">
       <header

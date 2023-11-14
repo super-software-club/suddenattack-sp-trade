@@ -1,15 +1,29 @@
-import { prisma } from "@/prisma";
+"use client";
+
+import { API_URL } from "@/const";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 
-export const dynamic = "force-dynamic";
+const getSetting = async () => {
+  try {
+    const response = await fetch(`${API_URL}/setting`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-const MainBannerRoot = async () => {
-  const settings = await prisma.setting.findFirst({
-    where: {
-      setting_id: 1,
-    },
+export const useGetSetting = () => {
+  return useQuery({
+    queryKey: ["setting"],
+    queryFn: getSetting,
   });
+};
+
+const MainBannerRoot = () => {
+  const { data: settings } = useGetSetting();
   return (
     <Link
       target="_blank"

@@ -18,7 +18,7 @@ const getReviewCount = async () => {
   }
 };
 
-const useGetReviewCount = () => {
+export const useGetReviewCount = () => {
   return useQuery({
     queryKey: ["reviewCount"],
     queryFn: () => getReviewCount(),

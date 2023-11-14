@@ -1,15 +1,31 @@
-import { prisma } from "@/prisma";
+"use client";
+import { API_URL } from "@/const";
 import { dateToString } from "@/utils/date";
+import { Notice } from "@prisma/client";
+import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
-const MainNotice = async () => {
-  const notices = await prisma.notice.findMany({
-    where: {
-      picked: true,
-    },
+const getPickedNotice = async () => {
+  try {
+    const res = await fetch(`${API_URL}/notice/picked`);
+    const data = (await res.json()) as Notice[];
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const useGetPickedNotice = () => {
+  return useQuery({
+    queryKey: ["pickedNotice"],
+    queryFn: getPickedNotice,
   });
+};
+
+const MainNotice = () => {
+  const { data: notices } = useGetPickedNotice();
   return (
     <section className="flex-1 bg-card-background lg:rounded-2xl flex flex-col">
       <header

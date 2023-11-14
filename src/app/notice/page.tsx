@@ -24,7 +24,7 @@ async function getNotice(page: number) {
   }
 }
 
-const useGetNotice = (page: number) => {
+export const useGetNotice = (page: number) => {
   return useQuery({
     queryKey: ["notice", page],
     queryFn: () => getNotice(page),
