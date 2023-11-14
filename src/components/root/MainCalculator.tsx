@@ -1,6 +1,5 @@
 "use client";
 
-import { prisma } from "@/prisma";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { useState } from "react";
 

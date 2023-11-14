@@ -1,5 +1,7 @@
 import { prisma } from "@/prisma";
 
+export const dynamic = "force-dynamic";
+
 const MainRatio = async () => {
   const setting = await prisma.setting.findFirst({
     where: {

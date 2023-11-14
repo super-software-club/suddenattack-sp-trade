@@ -2,6 +2,8 @@ import { prisma } from "@/prisma";
 import Image from "next/image";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 const MainBannerRoot = async () => {
   const settings = await prisma.setting.findFirst({
     where: {

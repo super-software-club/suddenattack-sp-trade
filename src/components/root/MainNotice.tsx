@@ -2,6 +2,8 @@ import { prisma } from "@/prisma";
 import { dateToString } from "@/utils/date";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 const MainNotice = async () => {
   const notices = await prisma.notice.findMany({
     where: {
