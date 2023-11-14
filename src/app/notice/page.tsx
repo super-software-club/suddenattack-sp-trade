@@ -12,9 +12,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Notice } from "@prisma/client";
 import { dateToString } from "@/utils/date";
-import { motion } from "framer-motion";
 import { AnimationWrapper } from "@/components/root/AnimationWrapper";
-import { Metadata } from "next";
 
 async function getNotice(page: number) {
   try {
@@ -72,6 +70,7 @@ const NoticePage = () => {
           {data?.map(notice => {
             return (
               <Accordion
+                key={notice.notice_id}
                 expanded={expanded === notice.notice_id}
                 onChange={handleChange(notice.notice_id)}
               >

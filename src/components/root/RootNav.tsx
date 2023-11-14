@@ -81,16 +81,22 @@ const RootNav = () => {
         id="menu-container"
         className="hidden flex-col gap-6 fixed h-screen w-2/3 px-6 py-4 bg-banner z-30 right-0 bottom-0 lg:flex lg:flex-row lg:gap-8 text-white font-bold lg:bg-transparent lg:static lg:h-auto lg:items-center lg:w-auto lg:px-0 lg:py-0 lg:justify-evenly"
       >
-        <Link className={`${pathname === "/" ? "text-primary" : ""}`} href="/">
+        <Link
+          onClick={onClickMenu}
+          className={`${pathname === "/" ? "text-primary" : ""}`}
+          href="/"
+        >
           메인
         </Link>
         <Link
+          onClick={onClickMenu}
           className={`${pathname === "/review" ? "text-primary" : ""}`}
           href="/review"
         >
           이용후기
         </Link>
         <Link
+          onClick={onClickMenu}
           className={`${pathname === "/notice" ? "text-primary" : ""}`}
           href="/notice"
         >
