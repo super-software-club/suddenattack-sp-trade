@@ -33,8 +33,6 @@ const RootNav = () => {
   if (isLoading) return <></>;
   if (isError) return <></>;
 
-  console.log(data);
-
   function handleTouchStart(event: React.TouchEvent) {
     setTouchStartX(event.changedTouches[0].screenX);
   }

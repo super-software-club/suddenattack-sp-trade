@@ -110,7 +110,7 @@ const ReviewRootContainer = () => {
           <Pagination
             color="primary"
             onChange={(e, page) => setPage(page)}
-            count={reviewCount !== undefined ? Math.ceil(reviewCount / 10) : 1}
+            count={reviewCount !== undefined ? Math.ceil(reviewCount / 5) : 1}
             sx={{
               ul: {
                 "& .MuiPaginationItem-root": {

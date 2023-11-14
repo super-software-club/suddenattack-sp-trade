@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/Users/choegihwan/Desktop/Projects/outside/231108/code/app/src/app/layout":[]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';
