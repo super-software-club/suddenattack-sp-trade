@@ -52,16 +52,13 @@ const RootNav = () => {
 
   function handleTouchEnd(event: React.TouchEvent) {
     setTouchEndX(event.changedTouches[0].screenX);
-    handleSwipeGesture();
-    setTouchEndX(0);
-    setTouchStartX(0);
   }
 
-  function handleSwipeGesture() {
-    if (touchStartX - touchEndX > -50) {
-      // 오른쪽에서 왼쪽으로 스와이프
-      onClickMenu(); // 메뉴 숨기는 함수 호출
-    }
+  if (touchStartX - touchEndX < -50) {
+    // 오른쪽에서 왼쪽으로 스와이프
+    onClickMenu(); // 메뉴 숨기는 함수 호출
+    setTouchEndX(0);
+    setTouchStartX(0);
   }
 
   return (
@@ -81,8 +78,6 @@ const RootNav = () => {
         />
       </div>
       <nav
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
         id="menu-container"
         className="hidden flex-col gap-6 fixed h-screen w-2/3 px-6 py-4 bg-banner z-30 right-0 bottom-0 lg:flex lg:flex-row lg:gap-8 text-white font-bold lg:bg-transparent lg:static lg:h-auto lg:items-center lg:w-auto lg:px-0 lg:py-0 lg:justify-evenly"
       >
