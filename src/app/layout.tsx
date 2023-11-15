@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     description: "누누SP - 서든어택 SP 거래소 24시간 운영 신속 안전 거래 보장",
     type: "website",
     locale: "ko_KR",
-    url: "http://nunusp24.com",
+    url: "http://localhost:3000",
     siteName: "누누SP - 서든어택 SP 거래소",
   },
   category: "game",
