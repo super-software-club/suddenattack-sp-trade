@@ -8,6 +8,7 @@ export async function GET() {
         picked: true,
       },
     });
+    console.log(pickedNotice);
     return NextResponse.json(pickedNotice);
   } catch (error) {
     return NextResponse.json({}, { status: 500 });
