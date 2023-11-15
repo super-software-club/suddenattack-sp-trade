@@ -9,7 +9,6 @@ export default function Home() {
       <main className="w-full flex flex-col items-center gap-14 pt-24 ">
         <MainBannerRoot />
         <MainInfoLayout />
-        <MainFooter />
       </main>
     </AnimationWrapper>
   );

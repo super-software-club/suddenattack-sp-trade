@@ -6,6 +6,7 @@ import Link from "next/link";
 import { IconButton } from "@mui/material";
 import { API_URL } from "@/const";
 import { motion } from "framer-motion";
+import { useQueryClient } from "@tanstack/react-query";
 
 const ReviewCard: React.FC<{
   reviewId: number;
@@ -15,6 +16,8 @@ const ReviewCard: React.FC<{
   favoriteCount: number;
   page: number;
 }> = ({ reviewId, title, content, review_name, favoriteCount, page }) => {
+  const queryClient = useQueryClient();
+
   async function onLikeClickHandler() {
     try {
       const result = await fetch(`${API_URL}/review/favorite`, {
@@ -25,7 +28,9 @@ const ReviewCard: React.FC<{
         body: JSON.stringify(reviewId),
       });
       if (result.ok) {
-        window.location.reload();
+        queryClient.invalidateQueries({
+          queryKey: ["review", page],
+        });
       }
     } catch (error) {}
   }
@@ -33,7 +38,7 @@ const ReviewCard: React.FC<{
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="flex flex-col text-white bg-card-container p-4 rounded-2xl flex-1 h-full justify-between max-w-sm"
+      className="flex flex-col text-white bg-card-container w-full p-4 rounded-2xl h-full justify-between"
     >
       {/** TODO: 링크 클릭시 이용 후기 페이지로 넘어가도록 해야함 */}
       <Link href={"/review"} className="flex-1 flex flex-col gap-4">

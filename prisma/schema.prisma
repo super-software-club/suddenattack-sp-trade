@@ -28,8 +28,12 @@ model Setting {
   left_image_link  String @db.VarChar(1000)
   mid_image_link   String @db.VarChar(1000)
   right_image_link String @db.VarChar(1000)
-  bg_color_bold    Int    @default(0)
-  footer_text      String @db.VarChar(1000)
+  left_image_src   String @db.VarChar(1000) @default("")
+  mid_image_src    String @db.VarChar(1000) @default("")
+  right_image_src  String @db.VarChar(1000) @default("")
+  bg_color_bold       Int    @default(0)
+  footer_top_text      String @db.VarChar(1000) @default("© 2023. All rights reserved.")
+  footer_bottom_text  String @db.VarChar(1000) @default("주소: 서울특별시 강남구 테헤란로 ")
 }
 
 model Review {

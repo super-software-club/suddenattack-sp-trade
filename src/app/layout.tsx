@@ -3,6 +3,7 @@ import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import RootHeader from "@/components/root/RootHeader";
 import MyQueryProvider from "@/MyQueryProvider";
+import MainFooter from "@/components/root/MainFooter";
 
 const inter = Noto_Sans_KR({
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -30,6 +31,16 @@ export const metadata: Metadata = {
     "서든SP시세",
     "서든SP수수료",
   ],
+  openGraph: {
+    title: "누누SP - 서든어택 SP 거래소",
+    description: "누누SP - 서든어택 SP 거래소 24시간 운영 신속 안전 거래 보장",
+    type: "website",
+    locale: "ko_KR",
+    url: "http://nunusp24.com",
+    siteName: "누누SP - 서든어택 SP 거래소",
+  },
+  category: "game",
+  robots: "index, follow",
 };
 
 export default function RootLayout({
@@ -38,13 +49,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
       <MyQueryProvider>
         <body
-          className={`${inter.className} bg-[url('../assets/background.png')] w-screen bg-cover bg-center bg-fixed scroll-m-0 bg-no-repeat no-scrollbar bg-banner overflow-x-hidden`}
+          className={`${inter.className} flex flex-col h-full gap-20 justify-between bg-[url('../assets/background.png')] w-screen bg-cover bg-center bg-fixed scroll-m-0 bg-no-repeat no-scrollbar bg-banner overflow-x-hidden`}
         >
           <RootHeader />
           {children}
+          <MainFooter />
         </body>
       </MyQueryProvider>
     </html>

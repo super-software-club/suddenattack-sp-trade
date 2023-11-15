@@ -1,11 +1,8 @@
 {
-  "/page": "app/page.js",
+  "/not-found": "app/not-found.js",
   "/api/review/route": "app/api/review/route.js",
-  "/api/review/count/route": "app/api/review/count/route.js",
-  "/notice/page": "app/notice/page.js",
-  "/api/notice/route": "app/api/notice/route.js",
-  "/api/notice/picked/route": "app/api/notice/picked/route.js",
   "/review/page": "app/review/page.js",
-  "/api/notice/count/route": "app/api/notice/count/route.js",
+  "/page": "app/page.js",
+  "/api/notice/picked/route": "app/api/notice/picked/route.js",
   "/api/setting/route": "app/api/setting/route.js"
 }

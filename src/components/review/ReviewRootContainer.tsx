@@ -3,10 +3,10 @@
 import { API_URL } from "@/const";
 import { ThumbUp } from "@mui/icons-material";
 import { IconButton, Pagination } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { dateToString } from "@/utils/date";
 import { useGetReview, useGetReviewCount } from "@/utils/hooks";
+import { useQueryClient } from "@tanstack/react-query";
 
 const ReviewRootContainer = () => {
   const [form, setForm] = useState({
@@ -14,6 +14,10 @@ const ReviewRootContainer = () => {
     title: "",
     content: "",
   });
+
+  const [page, setPage] = useState(1);
+
+  const queryClient = useQueryClient();
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -44,7 +48,22 @@ const ReviewRootContainer = () => {
     }
   }
 
-  const [page, setPage] = useState(1);
+  async function onLikeClickHandler(reviewId: number) {
+    try {
+      const result = await fetch(`${API_URL}/review/favorite`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(reviewId),
+      });
+      if (result.ok) {
+        queryClient.invalidateQueries({
+          queryKey: ["review", page],
+        });
+      }
+    } catch (error) {}
+  }
 
   const { data: reviewCount } = useGetReviewCount();
   const { data, refetch } = useGetReview(page);
@@ -99,9 +118,20 @@ const ReviewRootContainer = () => {
                   <p className="font-bold text-lg">{review.review_title}</p>
                   <p className="text-sm">{review.review_content}</p>
                 </div>
-                <p className="text-sm font-bold text-gray-400">
-                  {dateToString(review.reg_date)}
-                </p>
+                <footer className="flex flex-row items-center gap-2">
+                  <p className="text-sm font-bold text-gray-400">
+                    {dateToString(review.reg_date)}
+                  </p>
+                  <IconButton
+                    onClick={onLikeClickHandler.bind(null, review.review_id)}
+                    className="flex flex-row gap-2"
+                  >
+                    <ThumbUp className="text-white" />
+                    <p className="text-white text-sm font-bold">
+                      {review.review_count}
+                    </p>
+                  </IconButton>
+                </footer>
               </li>
             );
           })}

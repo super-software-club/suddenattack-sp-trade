@@ -10,7 +10,7 @@ const MainCalculator: React.FC<{
 
   const onSPChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputSP = Number(e.target.value);
-    const calculateResultSP = inputSP - inputSP * fee;
+    const calculateResultSP = inputSP + inputSP * fee;
     setResultSP(calculateResultSP);
   };
 

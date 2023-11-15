@@ -16,14 +16,18 @@ const MainRatio = () => {
         <h2 className="text-xl font-bold text-white">비율 안내</h2>
       </header>
       <div className="flex flex-col justify-evenly items-center h-full py-6">
-        <div className="flex flex-row gap-3">
-          <p className="text-red-500 font-bold">구매</p>{" "}
-          <p className="text-white font-bold">
+        <div className="flex flex-row gap-3 items-center">
+          <p className="text-white font-bold px-3 py-1 bg-red-500 rounded-lg">
+            구매
+          </p>{" "}
+          <p className="text-white font-bold ">
             1000SP: {setting?.buy_rate_min} ~ {setting?.buy_rate_max}
           </p>
         </div>
-        <div className="flex flex-row gap-3">
-          <p className="text-blue-500 font-bold">판매</p>{" "}
+        <div className="flex flex-row gap-3 items-center">
+          <p className="text-white font-bold px-3 py-1 rounded-lg bg-blue-500">
+            판매
+          </p>{" "}
           <p className="text-white font-bold">
             1000SP: {setting?.sell_rate_min} ~ {setting?.sell_rate_max}
           </p>

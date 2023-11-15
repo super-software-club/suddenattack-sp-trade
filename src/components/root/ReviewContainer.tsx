@@ -68,12 +68,13 @@ const ReviewContainer = () => {
     <section className="flex flex-col gap-6">
       <h2 className="text-center text-white font-bold text-2xl">이용후기</h2>
       <ul
-        className={`flex flex-row w-full bg-card-background h-72 lg:rounded-2xl justify-between p-8 gap-8 items-center`}
+        className={`flex flex-row w-full bg-card-background h-72 lg:rounded-2xl justify-between p-8 gap-4 items-center`}
       >
         <IconButton onClick={onLeftArrowClickHandler}>
           <ArrowBackIos className="text-white font-bold" />
         </IconButton>
         <AnimatePresence>
+          /
           {isLargeScreen ? (
             data?.map(review => {
               return (
