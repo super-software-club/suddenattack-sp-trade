@@ -31,6 +31,8 @@ export const metadata: Metadata = {
     "서든SP시세",
     "서든SP수수료",
   ],
+  // 구글 사이트 google-site-verification
+
   openGraph: {
     title: "누누SP - 서든어택 SP 거래소",
     description: "누누SP - 서든어택 SP 거래소 24시간 운영 신속 안전 거래 보장",
@@ -41,6 +43,9 @@ export const metadata: Metadata = {
   },
   category: "game",
   robots: "index, follow",
+  verification: {
+    google: "U8OGy-QslZtC_h5RgQ2LGWxJghRFh_ZliZt9YXjONHs",
+  },
 };
 
 export default function RootLayout({
