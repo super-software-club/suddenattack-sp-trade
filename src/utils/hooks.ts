@@ -84,6 +84,7 @@ export const useGetPickedNotice = () => {
   return useQuery({
     queryKey: ["pickedNotice"],
     queryFn: getPickedNotice,
+    staleTime: 5000,
   });
 };
 
