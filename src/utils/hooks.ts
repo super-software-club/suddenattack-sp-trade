@@ -72,7 +72,9 @@ export const useGetSetting = () => {
 
 const getPickedNotice = async () => {
   try {
-    const res = await fetch(`${API_URL}/notice/picked`);
+    const res = await fetch(`${API_URL}/notice/picked`, {
+      cache: "no-cache",
+    });
     const data = (await res.json()) as Notice[];
     return data;
   } catch (error) {
