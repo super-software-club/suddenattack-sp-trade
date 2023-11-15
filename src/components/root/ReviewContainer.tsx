@@ -50,18 +50,26 @@ const ReviewContainer = () => {
   }
 
   function onRightArrowClickHandler() {
-    if (isLargeScreen && !!data && data.length < 5) return;
     if (isLargeScreen) {
+      if (!data?.hasNextPage) {
+        return;
+      }
+      setPage(prev => prev + 1);
+      return;
+    }
+
+    if (!data?.hasNextPage && mobileReviewCount === 4) {
+      return;
+    }
+
+    if (mobileReviewCount === 4) {
+      setMobileReviewCount(0);
       setPage(prev => prev + 1);
     } else {
-      if (!data || data[mobileReviewCount + 1] === undefined) return;
-      if (mobileReviewCount === 4) {
-        setMobileReviewCount(0);
-        setPage(prev => prev + 1);
-      } else {
-        setMobileReviewCount(prev => prev + 1);
-      }
+      setMobileReviewCount(prev => prev + 1);
     }
+
+    return;
   }
 
   return (
@@ -77,7 +85,7 @@ const ReviewContainer = () => {
           <AnimatePresence>
             /
             {isLargeScreen ? (
-              data?.map(review => {
+              data?.reviews?.map(review => {
                 return (
                   <ReviewCard
                     reviewId={review.review_id}
@@ -93,30 +101,30 @@ const ReviewContainer = () => {
             ) : (
               <ReviewCard
                 reviewId={
-                  !data || data.length === 0
+                  !data?.reviews || data.reviews.length === 0
                     ? 0
-                    : data[mobileReviewCount].review_id
+                    : data.reviews[mobileReviewCount].review_id
                 }
                 page={page}
                 content={
-                  !data || data.length === 0
+                  !data?.reviews || data.reviews.length === 0
                     ? ""
-                    : data[mobileReviewCount].review_content
+                    : data.reviews[mobileReviewCount].review_content
                 }
                 title={
-                  !data || data.length === 0
+                  !data?.reviews || data.reviews.length === 0
                     ? ""
-                    : data[mobileReviewCount].review_title
+                    : data.reviews[mobileReviewCount].review_title
                 }
                 review_name={
-                  !data || data.length === 0
+                  !data?.reviews || data.reviews.length === 0
                     ? ""
-                    : data[mobileReviewCount].review_name
+                    : data.reviews[mobileReviewCount].review_name
                 }
                 favoriteCount={
-                  !data || data.length === 0
+                  !data?.reviews || data.reviews.length === 0
                     ? 0
-                    : +data[mobileReviewCount].review_count
+                    : +data.reviews[mobileReviewCount].review_count
                 }
               />
             )}

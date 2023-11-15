@@ -13,7 +13,9 @@ export async function GET(req: NextRequest) {
         reg_date: "desc",
       },
     });
-    return NextResponse.json(reviews);
+    const reviewCount = await prisma.review.count();
+    const hasNextPage = reviewCount > offset + limit;
+    return NextResponse.json({ reviews, hasNextPage });
   } catch (error) {
     return NextResponse.json({}, { status: 500 });
   }

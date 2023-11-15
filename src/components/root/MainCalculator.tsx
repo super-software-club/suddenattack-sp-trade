@@ -36,10 +36,10 @@ const MainCalculator: React.FC<{
           />
         </div>
         <ForwardIcon className="text-white font-bold" />
-        <p className="text-white font-bold flex-1">
-          <div className="whitespace-nowrap">수수료 포함 SP</div>
-          <div className="text-primary">{resultSP} SP</div>
-        </p>
+        <div className="text-white font-bold flex-1">
+          <p className="whitespace-nowrap">수수료 포함 SP</p>
+          <p className="text-primary">{resultSP} SP</p>
+        </div>
       </div>
     </div>
   );

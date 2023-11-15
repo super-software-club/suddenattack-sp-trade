@@ -107,7 +107,7 @@ const ReviewRootContainer = () => {
           </button>
         </div>
         <ul className="flex flex-col gap-4">
-          {data?.map(review => {
+          {data?.reviews.map(review => {
             return (
               <li
                 className="flex flex-row text-white gap-4 px-4 py-2 bg-card-container rounded-lg items-center justify-between w-full overflow-hidden"

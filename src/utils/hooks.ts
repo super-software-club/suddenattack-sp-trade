@@ -93,7 +93,10 @@ export const useGetPickedNotice = () => {
 const getReview = async (page: number) => {
   try {
     const response = await fetch(`${API_URL}/review?page=${page}`);
-    const data = (await response.json()) as Review[];
+    const data = (await response.json()) as {
+      reviews: Review[];
+      hasNextPage: boolean;
+    };
     return data;
   } catch (error) {
     console.error(error);
