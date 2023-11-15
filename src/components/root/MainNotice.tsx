@@ -3,8 +3,6 @@ import { dateToString } from "@/utils/date";
 import { useGetPickedNotice } from "@/utils/hooks";
 import Link from "next/link";
 
-export const dynamic = "force-dynamic";
-
 const MainNotice = () => {
   const { data: notices } = useGetPickedNotice();
   return (
