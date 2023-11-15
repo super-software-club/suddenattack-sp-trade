@@ -14,7 +14,7 @@ const MainBannerRoot = () => {
       <Link
         target="_blank"
         href={settings.left_image_src}
-        className="w-full aspect-video flex-1 relative"
+        className="w-full aspect-video flex-1 relative hidden lg:block"
       >
         {
           <Image

@@ -34,45 +34,28 @@ export default function NoticePage() {
         <header className="px-4">
           <h1 className="text-white text-2xl font-bold">공지사항</h1>
         </header>
-        <div className="p-4 bg-card-background flex flex-col gap-4 w-full max-w-4xl">
+        <ul className="p-4 bg-card-background flex flex-col gap-4 w-full max-w-4xl">
           {data?.map(notice => {
             return (
-              <Accordion
-                key={notice.notice_id}
-                expanded={expanded === notice.notice_id}
-                onChange={handleChange(notice.notice_id)}
-              >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1bh-content"
+              <li key={notice.notice_id}>
+                <div
                   id="panel1bh-header"
-                  className="bg-card-container text-white"
+                  className="bg-card-container text-white p-4 rounded-xl"
                 >
-                  <div className="flex flex-row items-center gap-4">
-                    <Typography
-                      sx={{
-                        fontSize: "0.75rem",
-                        flexShrink: 0,
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {dateToString(notice.reg_date)}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontSize: "1rem",
-                        color: "white",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      {notice.notice_title}
-                    </Typography>
-                  </div>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>{notice.notice_content}</Typography>
-                </AccordionDetails>
-              </Accordion>
+                  <Typography
+                    sx={{
+                      fontSize: "1.5rem",
+                      color: "white",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {notice.notice_title}
+                  </Typography>
+                  <Typography className="w-full break-words text-md">
+                    {notice.notice_content}
+                  </Typography>
+                </div>
+              </li>
             );
           })}
           <div className="w-full flex flex-row items-center justify-center">
@@ -89,7 +72,7 @@ export default function NoticePage() {
               }}
             />
           </div>
-        </div>
+        </ul>
       </main>
     </AnimationWrapper>
   );

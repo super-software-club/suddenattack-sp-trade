@@ -67,63 +67,65 @@ const ReviewContainer = () => {
   return (
     <section className="flex flex-col gap-6">
       <h2 className="text-center text-white font-bold text-2xl">이용후기</h2>
-      <ul
-        className={`flex flex-row w-full bg-card-background h-72 lg:rounded-2xl justify-between p-8 gap-4 items-center`}
-      >
+      <div className="flex flex-row items-center bg-card-background lg:px-4 rounded-2xl">
         <IconButton onClick={onLeftArrowClickHandler}>
           <ArrowBackIos className="text-white font-bold" />
         </IconButton>
-        <AnimatePresence>
-          /
-          {isLargeScreen ? (
-            data?.map(review => {
-              return (
-                <ReviewCard
-                  reviewId={review.review_id}
-                  page={page}
-                  key={`ReviewContainer${review.review_id}`}
-                  content={review.review_content}
-                  review_name={review.review_name}
-                  favoriteCount={review.review_count}
-                  title={review.review_title}
-                />
-              );
-            })
-          ) : (
-            <ReviewCard
-              reviewId={
-                !data || data.length === 0
-                  ? 0
-                  : data[mobileReviewCount].review_id
-              }
-              page={page}
-              content={
-                !data || data.length === 0
-                  ? ""
-                  : data[mobileReviewCount].review_content
-              }
-              title={
-                !data || data.length === 0
-                  ? ""
-                  : data[mobileReviewCount].review_title
-              }
-              review_name={
-                !data || data.length === 0
-                  ? ""
-                  : data[mobileReviewCount].review_name
-              }
-              favoriteCount={
-                !data || data.length === 0
-                  ? 0
-                  : +data[mobileReviewCount].review_count
-              }
-            />
-          )}
-        </AnimatePresence>
+        <ul
+          className={`lg:grid lg:grid-cols-5 w-full lg:rounded-2xl justify-center py-4 lg:p-8 gap-4 flex box-border`}
+        >
+          <AnimatePresence>
+            /
+            {isLargeScreen ? (
+              data?.map(review => {
+                return (
+                  <ReviewCard
+                    reviewId={review.review_id}
+                    page={page}
+                    key={`ReviewContainer${review.review_id}`}
+                    content={review.review_content}
+                    review_name={review.review_name}
+                    favoriteCount={review.review_count}
+                    title={review.review_title}
+                  />
+                );
+              })
+            ) : (
+              <ReviewCard
+                reviewId={
+                  !data || data.length === 0
+                    ? 0
+                    : data[mobileReviewCount].review_id
+                }
+                page={page}
+                content={
+                  !data || data.length === 0
+                    ? ""
+                    : data[mobileReviewCount].review_content
+                }
+                title={
+                  !data || data.length === 0
+                    ? ""
+                    : data[mobileReviewCount].review_title
+                }
+                review_name={
+                  !data || data.length === 0
+                    ? ""
+                    : data[mobileReviewCount].review_name
+                }
+                favoriteCount={
+                  !data || data.length === 0
+                    ? 0
+                    : +data[mobileReviewCount].review_count
+                }
+              />
+            )}
+          </AnimatePresence>
+        </ul>
         <IconButton onClick={onRightArrowClickHandler}>
           <ArrowForwardIos className="text-white font-bold" />
         </IconButton>
-      </ul>
+      </div>
     </section>
   );
 };

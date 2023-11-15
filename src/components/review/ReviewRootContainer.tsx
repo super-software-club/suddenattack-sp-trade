@@ -110,16 +110,16 @@ const ReviewRootContainer = () => {
           {data?.map(review => {
             return (
               <li
-                className="flex flex-row text-white gap-4 px-4 py-2 bg-card-container rounded-lg items-center justify-between"
+                className="flex flex-row text-white gap-4 px-4 py-2 bg-card-container rounded-lg items-center justify-between w-full overflow-hidden"
                 key={review.review_id}
               >
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 break-words w-2/3">
                   <p className="text-xs text-teal-500">{review.review_name}</p>
                   <p className="font-bold text-lg">{review.review_title}</p>
                   <p className="text-sm">{review.review_content}</p>
                 </div>
-                <footer className="flex flex-row items-center gap-2">
-                  <p className="text-sm font-bold text-gray-400">
+                <footer className="flex flex-col items-center gap-2 flex-1 flex-grow-0 flex-shrink-0 whitespace-nowrap">
+                  <p className="text-xs font-bold text-gray-400">
                     {dateToString(review.reg_date)}
                   </p>
                   <IconButton

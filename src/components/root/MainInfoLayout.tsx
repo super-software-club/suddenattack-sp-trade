@@ -12,7 +12,7 @@ const MainInfoLayout = () => {
   return (
     <section
       className={`w-full lg:w-10/12 lg:px-10 lg:py-6 flex flex-col gap-6 max-w-7xl ${
-        setting?.bg_color_bold === 0 ? "bg-banner" : ""
+        setting?.bg_color_bold === 0 ? "lg:bg-banner" : ""
       } lg:rounded-2xl`}
     >
       <div className="flex flex-col w-full lg:flex-row lg:justify-between gap-12">

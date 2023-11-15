@@ -9,13 +9,12 @@ const MainRatio = () => {
       <header
         className="w-full px-4 py-2 lg:rounded-t-2xl"
         style={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1580432551600-8c9768628a9e?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+          backgroundImage: "url(/images/title-background.jpeg)",
         }}
       >
         <h2 className="text-xl font-bold text-white">비율 안내</h2>
       </header>
-      <div className="flex flex-col justify-evenly items-center h-full py-6">
+      <div className="flex flex-col gap-4 justify-evenly items-center h-full py-6">
         <div className="flex flex-row gap-3 items-center">
           <p className="text-white font-bold px-3 py-1 bg-red-500 rounded-lg">
             구매

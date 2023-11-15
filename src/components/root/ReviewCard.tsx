@@ -38,15 +38,14 @@ const ReviewCard: React.FC<{
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="flex flex-col text-white bg-card-container w-full p-4 rounded-2xl h-full justify-between"
+      className="flex flex-col text-white justify-between bg-card-container p-2 rounded-2xl w-48 md:w-72 lg:w-auto box-border"
     >
-      {/** TODO: 링크 클릭시 이용 후기 페이지로 넘어가도록 해야함 */}
-      <Link href={"/review"} className="flex-1 flex flex-col gap-4">
+      <Link href={"/review"} className="flex flex-col gap-2">
         <header className="flex flex-col gap-1">
-          <h3 className="text-lg text-white font-bold">{title}</h3>
+          <h3 className="text-lg text-white font-bold break-words">{title}</h3>
           <p className="text-xs text-gray-500">{review_name}</p>
         </header>
-        <p className="text-sm text-white">{content}</p>
+        <p className="text-sm text-white break-words">{content}</p>
       </Link>
       <footer className="flex flex-row justify-center w-full gap-1 items-center">
         <IconButton onClick={onLikeClickHandler}>
