@@ -14,7 +14,7 @@ const MainInfoLayout = () => {
 
   return (
     <section
-      className={`w-full lg:w-10/12 lg:px-10 lg:py-6 flex flex-col gap-6 max-w-7xl ${
+      className={`w-full lg:w-10/12 lg:px-10 lg:py-6 flex flex-col gap-6 ${
         setting?.bg_color_bold === 0 ? "lg:bg-banner" : ""
       } lg:rounded-2xl`}
     >

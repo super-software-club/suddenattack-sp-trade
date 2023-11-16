@@ -116,7 +116,7 @@ const ReviewRootContainer = () => {
                 <div className="flex flex-col gap-2 break-words w-2/3">
                   <p className="text-xs text-teal-500">{review.review_name}</p>
                   <p className="font-bold text-lg">{review.review_title}</p>
-                  <p className="text-sm">{review.review_content}</p>
+                  <pre className="text-sm">{review.review_content}</pre>
                 </div>
                 <footer className="flex flex-col items-center gap-2 flex-1 flex-grow-0 flex-shrink-0 whitespace-nowrap">
                   <p className="text-xs font-bold text-gray-400">

@@ -45,7 +45,7 @@ const ReviewCard: React.FC<{
           <h3 className="text-lg text-white font-bold break-words">{title}</h3>
           <p className="text-xs text-gray-500">{review_name}</p>
         </header>
-        <p className="text-sm text-white break-words">{content}</p>
+        <pre className="text-sm text-white break-words">{content}</pre>
       </Link>
       <footer className="flex flex-row justify-center w-full gap-1 items-center">
         <IconButton onClick={onLikeClickHandler}>
