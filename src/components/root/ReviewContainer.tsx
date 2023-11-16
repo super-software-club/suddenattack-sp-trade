@@ -50,6 +50,10 @@ const ReviewContainer = () => {
   }
 
   function onRightArrowClickHandler() {
+    if (!data) {
+      return;
+    }
+
     if (isLargeScreen) {
       if (!data?.hasNextPage) {
         return;
@@ -66,7 +70,11 @@ const ReviewContainer = () => {
       setMobileReviewCount(0);
       setPage(prev => prev + 1);
     } else {
-      setMobileReviewCount(prev => prev + 1);
+      if (!data.reviews[mobileReviewCount + 1]) {
+        return;
+      } else {
+        setMobileReviewCount(prev => prev + 1);
+      }
     }
 
     return;
