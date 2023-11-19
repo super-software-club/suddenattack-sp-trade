@@ -24,8 +24,13 @@ const MainCalculator: React.FC<{
 
   return (
     <div className="bg-card-background lg:rounded-2xl box-border flex flex-col items-center xl:flex-1">
-      <header className="bg-card-container px-4 w-full lg:rounded-t-2xl py-2">
-        <h2 className="text-xl font-bold text-center text-white">
+      <header
+        style={{
+          backgroundImage: "url(images/title-bg2.jpeg)",
+        }}
+        className="px-4 w-full lg:rounded-t-2xl py-2"
+      >
+        <h2 className="text-xl text-stroke font-extrabold text-center text-white">
           실수령 SP 계산기
         </h2>
       </header>

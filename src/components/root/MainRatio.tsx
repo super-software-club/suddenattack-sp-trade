@@ -9,8 +9,15 @@ const MainRatio = () => {
   const { data: setting } = useGetSetting();
   return (
     <div className="flex-1 bg-card-background lg:rounded-2xl  flex flex-col items-center">
-      <header className="w-full bg-card-container py-2 lg:rounded-t-2xl">
-        <h2 className="text-xl text-center font-bold text-white">비율 안내</h2>
+      <header
+        style={{
+          backgroundImage: "url(images/title-bg3.jpeg)",
+        }}
+        className="w-full bg-card-container py-2 lg:rounded-t-2xl"
+      >
+        <h2 className="text-xl text-stroke text-center font-extrabold text-white">
+          비율 안내
+        </h2>
       </header>
       <div className="flex flex-col gap-4 justify-evenly items-start h-full py-6">
         <div className="flex flex-row gap-3 items-center">
