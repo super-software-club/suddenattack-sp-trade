@@ -12,6 +12,8 @@ const MainRatio = () => {
       <header
         style={{
           backgroundImage: "url(images/title-bg3.jpeg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
         className="w-full bg-card-container py-2 lg:rounded-t-2xl"
       >
@@ -20,7 +22,7 @@ const MainRatio = () => {
         </h2>
       </header>
       <div className="flex flex-col gap-4 justify-evenly items-start h-full py-6">
-        <div className="flex flex-row gap-3 items-center">
+        <div className="flex flex-row gap-6 items-center">
           <Image src={BuyButton} width={93} height={27} alt="buy button" />
           <p className="text-white font-bold flex flex-row items-center gap-1">
             <span className="text-sm">1,000SP : </span>
@@ -30,7 +32,7 @@ const MainRatio = () => {
             </span>
           </p>
         </div>
-        <div className="flex flex-row gap-3 items-center">
+        <div className="flex flex-row gap-6 items-center">
           <Image src={SellButton} width={93} height={27} alt="sell button" />
           <p className="text-white font-bold flex flex-row items-center gap-1">
             <span className="text-sm">1,000SP : </span>

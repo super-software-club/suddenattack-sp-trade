@@ -27,6 +27,8 @@ const MainCalculator: React.FC<{
       <header
         style={{
           backgroundImage: "url(images/title-bg2.jpeg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
         className="px-4 w-full lg:rounded-t-2xl py-2"
       >

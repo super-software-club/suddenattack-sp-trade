@@ -54,6 +54,8 @@ const MainNotice = () => {
         <header
           style={{
             backgroundImage: "url(images/title-bg1.jpeg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
           className="flex flex-row items-center justify-between w-full px-8 py-2 lg:rounded-t-2xl"
         >
