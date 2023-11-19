@@ -1,6 +1,6 @@
 import { API_URL } from "@/const";
 import { Notice, Review } from "@prisma/client";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 async function getNotice(page: number) {
   try {
@@ -107,5 +107,22 @@ export const useGetReview = (page: number) => {
   return useQuery({
     queryKey: ["review", page],
     queryFn: () => getReview(page),
+  });
+};
+
+const updateNoticeVisitCount = async (noticeId: number) => {
+  try {
+    await fetch(`${API_URL}/notice/${noticeId}/visit`, {
+      method: "PUT",
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const useUpdateNoticeVisitCount = () => {
+  return useMutation({
+    mutationKey: ["updateNoticeVisitCount"],
+    mutationFn: (noticeId: number) => updateNoticeVisitCount(noticeId),
   });
 };

@@ -1,6 +1,9 @@
 "use client";
 
 import { useGetSetting } from "@/utils/hooks";
+import Image from "next/image";
+import SellButton from "@/assets/sell-button.png";
+import BuyButton from "@/assets/buy-button.png";
 
 const MainRatio = () => {
   const { data: setting } = useGetSetting();
@@ -11,9 +14,7 @@ const MainRatio = () => {
       </header>
       <div className="flex flex-col gap-4 justify-evenly items-start h-full py-6">
         <div className="flex flex-row gap-3 items-center">
-          <p className="text-white font-bold px-4 py-1 bg-red-400 rounded-lg border-2 border-white italic">
-            구매
-          </p>{" "}
+          <Image src={BuyButton} width={93} height={27} alt="buy button" />
           <p className="text-white font-bold flex flex-row items-center gap-1">
             <span className="text-sm">1,000SP : </span>
             <span className="text-lg">
@@ -23,9 +24,7 @@ const MainRatio = () => {
           </p>
         </div>
         <div className="flex flex-row gap-3 items-center">
-          <p className="text-white font-bold px-4 py-1 rounded-lg bg-blue-400 border-2 border-white italic">
-            판매
-          </p>{" "}
+          <Image src={SellButton} width={93} height={27} alt="sell button" />
           <p className="text-white font-bold flex flex-row items-center gap-1">
             <span className="text-sm">1,000SP : </span>
             <span className="text-lg">

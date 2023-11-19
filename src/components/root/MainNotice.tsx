@@ -1,15 +1,20 @@
 "use client";
 import { dateToString } from "@/utils/date";
-import { useGetPickedNotice } from "@/utils/hooks";
+import { useGetPickedNotice, useUpdateNoticeVisitCount } from "@/utils/hooks";
 import Link from "next/link";
 import NoticeDetailDialog from "../NoticeDetailDialog";
 import { useState } from "react";
 import { Notice } from "@prisma/client";
+import { useQueryClient } from "@tanstack/react-query";
 
 const MainNotice = () => {
   const { data: notices } = useGetPickedNotice();
 
   const [open, setOpen] = useState<boolean>(false);
+
+  const { mutate } = useUpdateNoticeVisitCount();
+
+  const queryClient = useQueryClient();
 
   const [detailNotice, setDetailNotice] = useState<Notice>({
     notice_content: "",
@@ -21,7 +26,16 @@ const MainNotice = () => {
   });
 
   const onNoticeClickHandler = (notice: Notice) => {
-    setDetailNotice(notice);
+    mutate(notice.notice_id, {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ["pickedNotice"] });
+      },
+    });
+    const newNotice: Notice = {
+      ...notice,
+      visit_count: notice.visit_count + 1,
+    };
+    setDetailNotice(newNotice);
     setOpen(true);
   };
 
@@ -64,13 +78,6 @@ const MainNotice = () => {
                     className="text-gray-500"
                   >
                     {dateToString(notice.reg_date)}
-                  </p>
-                  <p
-                    style={{
-                      fontSize: "0.7rem",
-                    }}
-                  >
-                    조회수 : {notice?.visit_count}
                   </p>
                 </div>
               </div>

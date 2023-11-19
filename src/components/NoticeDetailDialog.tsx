@@ -1,4 +1,5 @@
 import { Dialog, DialogActions } from "@mui/material";
+import { useEffect } from "react";
 
 type Props = {
   noticeId: number;

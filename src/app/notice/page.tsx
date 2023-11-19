@@ -10,7 +10,11 @@ import { Pagination } from "@mui/material";
 import { useEffect, useState } from "react";
 import { dateToString } from "@/utils/date";
 import { AnimationWrapper } from "@/components/root/AnimationWrapper";
-import { useGetNotice, useGetNoticeCount } from "@/utils/hooks";
+import {
+  useGetNotice,
+  useGetNoticeCount,
+  useUpdateNoticeVisitCount,
+} from "@/utils/hooks";
 import NoticeDetailDialog from "@/components/NoticeDetailDialog";
 import { Notice } from "@prisma/client";
 
@@ -18,6 +22,8 @@ export default function NoticePage() {
   const [open, setOpen] = useState<boolean>(false);
 
   const [page, setPage] = useState(1);
+
+  const { mutate } = useUpdateNoticeVisitCount();
 
   const [detailNotice, setDetailNotice] = useState<Notice>({
     notice_content: "",
@@ -37,7 +43,16 @@ export default function NoticePage() {
   }, [page]);
 
   const onNoticeClickHandler = (notice: Notice) => {
-    setDetailNotice(notice);
+    mutate(notice.notice_id, {
+      onSuccess: () => {
+        refetch();
+      },
+    });
+    const newNotice: Notice = {
+      ...notice,
+      visit_count: notice.visit_count + 1,
+    };
+    setDetailNotice(newNotice);
     setOpen(true);
   };
 

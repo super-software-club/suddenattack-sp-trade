@@ -33,6 +33,18 @@ const ReviewRootContainer = () => {
 
   async function onSubmitHandler() {
     try {
+      if (form.name === "") {
+        alert("별명을 입력해주세요.");
+        return;
+      }
+      if (form.title === "") {
+        alert("제목을 입력해주세요.");
+        return;
+      }
+      if (form.content === "") {
+        alert("내용을 입력해주세요.");
+        return;
+      }
       const result = await fetch(`${API_URL}/review`, {
         method: "POST",
         headers: {
@@ -113,12 +125,14 @@ const ReviewRootContainer = () => {
                 className="flex flex-row text-white gap-4 px-4 py-2 bg-card-container rounded-lg items-center justify-between w-full overflow-hidden"
                 key={review.review_id}
               >
-                <div className="flex flex-col gap-2 break-words w-2/3">
+                <div className="flex flex-col gap-2 break-words w-7/12 lg:w-10/12">
                   <p className="text-xs text-teal-500">{review.review_name}</p>
                   <p className="font-bold text-lg">{review.review_title}</p>
-                  <pre className="text-sm">{review.review_content}</pre>
+                  <pre className="text-sm break-words whitespace-pre-wrap">
+                    {review.review_content}
+                  </pre>
                 </div>
-                <footer className="flex flex-col items-center gap-2 flex-1 flex-grow-0 flex-shrink-0 whitespace-nowrap">
+                <footer className="flex flex-col items-center gap-2 flex-1 whitespace-nowrap">
                   <p className="text-xs font-bold text-gray-400">
                     {dateToString(review.reg_date)}
                   </p>
