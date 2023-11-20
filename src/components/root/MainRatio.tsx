@@ -17,7 +17,7 @@ const MainRatio = () => {
         }}
         className="w-full bg-card-container py-2 lg:rounded-t-2xl"
       >
-        <h2 className="text-xl text-stroke text-center font-extrabold text-white">
+        <h2 className="text-xl text-center font-extrabold text-white">
           비율 안내
         </h2>
       </header>

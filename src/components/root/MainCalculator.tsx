@@ -32,7 +32,7 @@ const MainCalculator: React.FC<{
         }}
         className="px-4 w-full lg:rounded-t-2xl py-2"
       >
-        <h2 className="text-xl text-stroke font-extrabold text-center text-white">
+        <h2 className="text-xl font-extrabold text-center text-white">
           실수령 SP 계산기
         </h2>
       </header>
