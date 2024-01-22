@@ -27,8 +27,8 @@ const MainRatio = () => {
           <p className="text-white font-bold flex flex-row items-center gap-1">
             <span className="text-sm">1,000SP : </span>
             <span className="text-lg">
-              {setting?.buy_rate_min.toLocaleString()} ~{" "}
-              {setting?.buy_rate_max.toLocaleString()}원
+              {setting?.buy_rate_min.toFixed(0).toLocaleString()} ~{" "}
+              {setting?.buy_rate_max.toFixed(0).toLocaleString()}원
             </span>
           </p>
         </div>
@@ -37,8 +37,8 @@ const MainRatio = () => {
           <p className="text-white font-bold flex flex-row items-center gap-1">
             <span className="text-sm">1,000SP : </span>
             <span className="text-lg">
-              {setting?.sell_rate_min.toLocaleString()} ~{" "}
-              {setting?.sell_rate_max.toLocaleString()}원
+              {setting?.sell_rate_min.toFixed(0).toLocaleString()} ~{" "}
+              {setting?.sell_rate_max.toFixed(0).toLocaleString()}원
             </span>
           </p>
         </div>

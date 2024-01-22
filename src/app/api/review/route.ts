@@ -24,16 +24,18 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const data = await req.json();
-    const { name, title, content } = data;
+    const { name, title, content, date } = data;
     const review = await prisma.review.create({
       data: {
         review_name: name,
         review_title: title,
         review_content: content,
+        reg_date: new Date(date).toISOString(),
       },
     });
     return NextResponse.json(review);
   } catch (error) {
+    console.error(error);
     return NextResponse.json({}, { status: 500 });
   }
 }

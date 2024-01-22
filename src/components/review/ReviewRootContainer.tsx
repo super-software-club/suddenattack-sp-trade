@@ -13,6 +13,7 @@ const ReviewRootContainer = () => {
     name: "",
     title: "",
     content: "",
+    date: new Date(),
   });
 
   const [page, setPage] = useState(1);
@@ -89,7 +90,7 @@ const ReviewRootContainer = () => {
       <header className="px-4">
         <h1 className="text-white text-2xl font-bold">이용후기</h1>
       </header>
-      <main className="w-full bg-card-background py-6 px-4 flex flex-col gap-4">
+      <main className="w-full bg-card-background py-6 px-4 flex flex-col gap-4 rounded-md">
         <div className="flex flex-col gap-4 ">
           <input
             name="name"
@@ -109,6 +110,14 @@ const ReviewRootContainer = () => {
             placeholder="여러분의 소중한 후기를 입력해주세요."
             className="px-2 py-3"
           />
+          <div className="w-full">
+            <input
+              className="w-fit"
+              type="date"
+              name="date"
+              onChange={onChangeHandler}
+            />
+          </div>
         </div>
         <div className="flex flex-row justify-end">
           <button
