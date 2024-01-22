@@ -58,7 +58,9 @@ const MainCalculator: React.FC<{
           <p className="whitespace-nowrap text-xl 2xl:text-xl">
             수수료 포함 SP
           </p>
-          <p className="text-primary text-lg 2xl:text-xl">{resultSP} SP</p>
+          <p className="text-primary text-lg 2xl:text-xl">
+            {resultSP.toFixed(0)} SP
+          </p>
         </div>
       </div>
     </div>
