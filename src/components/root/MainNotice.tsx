@@ -77,16 +77,6 @@ const MainNotice = () => {
                     {notice?.notice_title}
                   </strong>
                 </p>
-                <div className="flex flex-col items-center">
-                  <p
-                    style={{
-                      fontSize: "0.7rem",
-                    }}
-                    className="text-gray-500"
-                  >
-                    {dateToString(notice.reg_date)}
-                  </p>
-                </div>
               </div>
             );
           })}

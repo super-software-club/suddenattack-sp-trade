@@ -13,7 +13,6 @@ const ReviewRootContainer = () => {
     name: "",
     title: "",
     content: "",
-    date: new Date(),
   });
 
   const [page, setPage] = useState(1);
@@ -110,14 +109,6 @@ const ReviewRootContainer = () => {
             placeholder="여러분의 소중한 후기를 입력해주세요."
             className="px-2 py-3"
           />
-          <div className="w-full">
-            <input
-              className="w-fit"
-              type="date"
-              name="date"
-              onChange={onChangeHandler}
-            />
-          </div>
         </div>
         <div className="flex flex-row justify-end">
           <button

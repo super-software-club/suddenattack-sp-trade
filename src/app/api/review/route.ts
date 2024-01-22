@@ -30,7 +30,6 @@ export async function POST(req: NextRequest) {
         review_name: name,
         review_title: title,
         review_content: content,
-        reg_date: new Date(date).toISOString(),
       },
     });
     return NextResponse.json(review);
